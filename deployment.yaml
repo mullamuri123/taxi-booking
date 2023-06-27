@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1-nginx-deployment
+  name: app1-eginx-deployment
   labels:
-    app: app1-nginx
+    app: app1-eginx
 spec:
   replicas: 6
   selector:
     matchLabels:
-      app: app1-nginx
+      app: app1-eginx
   template:
     metadata:
       labels:
-        app: app1-nginx
+        app: app1-eginx
     spec:
       containers:
-        - name: app1-nginx
+        - name: app1-eginx
           image: devopsvmr/811pm:2
           ports:
             - containerPort: 8080
@@ -23,13 +23,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app1-nginx-loadbalancer-service
+  name: app1-eginx-loadbalancer-service
   labels:
-    app: app1-nginx
+    app: app1-eginx
 spec:
   type: LoadBalancer
   selector:
-    app: app1-nginx
+    app: app1-eginx
   ports:
     - port: 8080
       targetPort: 8080
